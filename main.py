@@ -134,7 +134,7 @@ async def cmd_fio(message: types.Message, state: FSMContext):
         dict_data[message.from_user.id]['fio'] = data['fio']
     await message.reply(f'{message.text} uchun ovyektivka to\'ldirishni boshladik\n\nQayerda o\'qiysiz',
                         reply_markup=cancelkb())
-    await update_user(message.from_user.id, 'fio',message.text)
+    await update_user(message.from_user.id, 'fio', message.text)
     await Create_len.next()
     print(dict_data[message.from_user.id]['fio'])
 
@@ -146,7 +146,7 @@ async def cmd_study(message: types.Message, state: FSMContext):
         dict_data[message.from_user.id]['study'] = data['study']
     await message.reply(text='Tug\'ilgan kuni, yili, oyi',
                         reply_markup=cancelkb())
-    await update_user(message.from_user.id, 'study',message.text)
+    await update_user(message.from_user.id, 'study', message.text)
     await Create_len.next()
 
 @dp.message_handler(state=Create_len.birthday)
@@ -157,7 +157,7 @@ async def cmd_birtday(message: types.Message, state: FSMContext):
         dict_data[message.from_user.id]['birthday'] = data['birthday']
     await message.reply(text='Qayerda tug\'ilgan',
                         reply_markup=cancelkb())
-    await update_user(message.from_user.id, 'birthday',message.text)
+    await update_user(message.from_user.id, 'birthday', message.text)
     await Create_len.next()
 
 @dp.message_handler(state=Create_len.country)
@@ -168,106 +168,108 @@ async def cmd_millat(message: types.Message, state: FSMContext):
         dict_data[message.from_user.id]['country'] = data['country']
     await message.reply(text='Millati',
                         reply_markup=cancelkb())
-    await update_user(message.from_user.id, 'country',message.text)
+    await update_user(message.from_user.id, 'country', message.text)
     await Create_len.next()
 
 @dp.message_handler(state=Create_len.millati)
 async def cmd_millat(message: types.Message, state: FSMContext):
-    async with state.proxy() as data:
-        data['millati'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id]['millati'] = data['millati']
+    # async with state.proxy() as data:
+    #     data['millati'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id]['millati'] = data['millati']
+
+    await update_user(message.from_user.id, 'millati', message.text)
     await message.reply(text='Partiyaviyligi \n Bor bo\'lsa turi bo\'lmasa yo\'q deb javob bering',
                         reply_markup=cancelkb())
     await Create_len.next()
 
 @dp.message_handler(state=Create_len.partiyaviylik)
 async def cmd_partiya(message: types.Message, state: FSMContext):
-    async with state.proxy() as data:
-        data['partiyaviylik'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id]['partiyaviylik'] = data['partiyaviylik']
+    # async with state.proxy() as data:
+    #     data['partiyaviylik'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id]['partiyaviylik'] = data['partiyaviylik']
     await message.reply(text='Ma\'lumoti',
                         reply_markup=cancelkb())
 
-    await update_user(message.from_user.id, 'partiyaviylik',message.text)
+    await update_user(message.from_user.id, 'partiyaviylik', message.text)
     await Create_len.next()
 
 @dp.message_handler(state=Create_len.malumoti)
 async def cmd_malumot(message: types.Message, state: FSMContext):
-    async with state.proxy() as data:
-        data['malumoti'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id]['malumoti'] = data['malumoti']
+    # async with state.proxy() as data:
+    #     data['malumoti'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id]['malumoti'] = data['malumoti']
     await message.reply(text='Qayerni tugatib bu yerga keldi?',
                         reply_markup=cancelkb())
 
-    await update_user(message.from_user.id, 'malumoti',message.text)
+    await update_user(message.from_user.id, 'malumoti', message.text)
     await Create_len.next()
 
 @dp.message_handler(state=Create_len.tamomlagan)
 async def cmd_mutaxassis(message: types.Message, state: FSMContext):
-    async with state.proxy() as data:
-        data['tamomlagan'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id]['tamomlagan'] = data['tamomlagan']
+    # async with state.proxy() as data:
+    #     data['tamomlagan'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id]['tamomlagan'] = data['tamomlagan']
     await message.reply(text='Ma\'lumoti bo\'yicha mutaxassisligi qanaqa?',
                         reply_markup=cancelkb())
-    await update_user(message.from_user.id, 'tamomlagan',message.text)
+    await update_user(message.from_user.id, 'tamomlagan', message.text)
     await Create_len.next()
 
 @dp.message_handler(state=Create_len.mutaxassisligi)
 async def cmd_mutaxassis(message: types.Message, state: FSMContext):
-    async with state.proxy() as data:
-        data['mutaxassislik'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id]['mutaxassislik'] = data['mutaxassislik']
+    # async with state.proxy() as data:
+    #     data['mutaxassislik'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id]['mutaxassislik'] = data['mutaxassislik']
     await message.reply(text='Qaysi tillarni biladi',
                         reply_markup=cancelkb())
-    await update_user(message.from_user.id, 'mutaxassislik',message.text)
+    await update_user(message.from_user.id, 'mutaxassislik', message.text)
     await Create_len.next()
 
 @dp.message_handler(state=Create_len.language)
 async def cmd_language(message: types.Message, state=FSMContext):
-    async with state.proxy() as data:
-        data['language'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id]['language'] = data['language']
+    # async with state.proxy() as data:
+    #     data['language'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id]['language'] = data['language']
     await message.reply(text='Qanaqa mukofotlar olgan',
                         reply_markup=cancelkb())
-    await update_user(message.from_user.id, 'language',message.text)
+    await update_user(message.from_user.id, 'language', message.text)
     await Create_len.next()
 
 @dp.message_handler(state=Create_len.mukofot)
 async def cmd_mikofot(message: types.Message, state: FSMContext):
-    async with state.proxy() as data:
-        data['mukofot'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id]['mukofot'] = data['mukofot']
+    # async with state.proxy() as data:
+    #     data['mukofot'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id]['mukofot'] = data['mukofot']
     await message.reply(text="Xalq  deputatlari, respublika, viloyat, shahar va tuman Kengashi deputatimi yoki boshqa\nsaylanadigan organlarning a’zosimi (to‘liq ko‘rsatilishi lozim)",
                         reply_markup=cancelkb())
-    await update_user(message.from_user.id, 'mukofot',message.text)
+    await update_user(message.from_user.id, 'mukofot', message.text)
     await Create_len.next()
 
 @dp.message_handler(state=Create_len.saylov)
 async def cmd_saylov(message: types.Message, state: FSMContext):
-    async with state.proxy() as data:
-        data['saylov'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id]['saylov'] = data['saylov']
+    # async with state.proxy() as data:
+    #     data['saylov'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id]['saylov'] = data['saylov']
     await message.reply(text='Mehnat faoliyati haqida ma\'lumot bering',
                         reply_markup=cancelkb())
-    await update_user(message.from_user.id, 'saylov',message.text)
+    await update_user(message.from_user.id, 'saylov', message.text)
     await Create_len.next()
 
 @dp.message_handler(state=Create_len.mehnat_faoliyati)
 async def cmd_work(message: types.Message, state: FSMContext):
-    async with state.proxy() as data:
-        data['mehnat_faoliyati'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id]['mehnat_faoliyati'] = data['mehnat_faoliyati']
+    # async with state.proxy() as data:
+    #     data['mehnat_faoliyati'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id]['mehnat_faoliyati'] = data['mehnat_faoliyati']
     await message.reply(text='Rasm uzating')
-    await update_user(message.from_user.id, 'mehnat_faoliyati',message.text)
+    await update_user(message.from_user.id, 'mehnat_faoliyati', message.text)
     await Create_len.next()
 
 
@@ -282,97 +284,125 @@ async def cmd_work(message: types.Message, state: FSMContext):
 
     await message.reply(text='Ota onasi qarindoshlari haqida ma\'lumotlar',
                         reply_markup=create_parents_keyboard())
+    await Create_len.next()
+    await message.reply(
+        text='Oila a\'zolari kimlardan iborat Misol uchun otasi, onasi, akasi, opasi')
+    await update_user(message.from_user.id, 'qarindoshlari', message.text)
     await Create_parents.count_par.set()
-
 async def load_photo(message: types.Message, state: FSMContext) -> None:
     async with state.proxy() as data:
         data['photo'] = message.photo[0].file_id
-    await Create_len.next()
-    await message.reply(text='Yaqin qarindoshlari \nMisol uchun(otasi, onasi, akasi, opasi,singlisi, farzandlari, xotini/eri)')
 
+    # await message.reply(text='Yaqin qarindoshlari \nMisol uchun(otasi, onasi, akasi, opasi,singlisi, farzandlari, xotini/eri)')
+    await update_user(message.from_user.id, 'qarindoshlari', message.text)
 # @dp.message_handler(state = Create_len.count_parents)
 # async def count_parents(message: types.Message, state: FSMContext):
 #     #shu yerda turini oladi.
-#
+    await Create_len.next()
+    # await Create_parents.count_par.set()
 
 @dp.message_handler(commands=['create_person'], state='*')
 async def cmd_perents(message: types.Message, state=FSMContext):
     a = await check_user(message.from_user.id)+1
-    await update_user(message.from_user.id,'count_parent', int(a))
-    async with state.proxy() as data:
-        data[f'qarindoshlik_turi{a}'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id][f'qarindoshlik_turi{a}'] = data[f'qarindoshlik_turi{a}']
-        print(message.text)
-    await message.answer(text='Qarindoshining turi (otasi, onasi, akasi, opasi, ...)')
-    await Create_parents.qarindoshligi.set()
+    await update_user(message.from_user.id, 'count_parent', int(a))
+    # await create_parentbase(message.from_user.id)
+    # async with state.proxy() as data:
+    #     data[f'qarindoshlik_turi{a}'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id][f'qarindoshlik_turi{a}'] = data[f'qarindoshlik_turi{a}']
+    #     print(message.text)
+    await message.answer(text='Qarindoshining turi (otasi, onasi, akasi, opasi, ...) ning ismi')
+    await Create_parents.fio.set()
     print(a)
 
 @dp.message_handler(state=Create_parents.count_par)
 async def cmd_perents(message: types.Message, state=FSMContext):
+    await update_user(message.from_user.id, 'qarindoshlari', message.text)
+    nds = message.text
+    parent_list = nds.split(',')
+    print(len(parent_list))
+    await create_parentbase(message.from_user.id)
     a = await check_user(message.from_user.id)
-    async with state.proxy() as data:
-        data[f'qarindoshligi{a}'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id][f'qarindoshligi{a}'] = data[f'qarindoshligi{a}']
-    await message.answer(text='Familiya ism otasining ismi ')
+    for i in range(1,len(parent_list)+1):
+        await insert_parentbase(message.from_user.id, parent_list[i-1])
+    # await update_parent(message.from_user.id,'qarindoshligi', message.text)
+    await message.answer(text=f"{parent_list[0]} haqida ma'lumotlarni yig'ish uchun /create_person tugmasini bosing")
     await Create_parents.next()
 
 @dp.message_handler(state=Create_parents.qarindoshligi)
 async def cmd_perents(message: types.Message, state=FSMContext):
     a = await check_user(message.from_user.id)
-    async with state.proxy() as data:
-        data[f'qarindoshligi{a}'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id][f'qarindoshligi{a}'] = data[f'qarindoshligi{a}']
+    nds = await select_user(message.from_user.id, 'qarindoshlari')
+    parent_list = nds.split(',')
+    # nds = await select_user(message.from_user.id, 'qarindoshlari')
+    # parent_list = nds.split(',')
+    await update_parent(message.from_user.id, 'qarindoshligi', parent_list[a-1],message.text)
     await message.answer(text='Familiya ism otasining ismi ')
     await Create_parents.next()
 
 @dp.message_handler(state=Create_parents.fio)
 async def cmdfio(message: types.Message, state: FSMContext):
+    # async with state.proxy() as data:
+    #     data[f'pfio{a}'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id][f'pfio{a}'] = data[f'pfio{a}']
+    # nds = await select_user(message.from_user.id, 'qarindoshlari')
+    # parent_list = nds.split(',')
     a = await check_user(message.from_user.id)
-    async with state.proxy() as data:
-        data[f'pfio{a}'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id][f'pfio{a}'] = data[f'pfio{a}']
+    nds = await select_user(message.from_user.id, 'qarindoshlari')
+    parent_list = nds.split(',')
+    await update_parent(message.from_user.id, 'fio', parent_list[a-1], message.text)
     await message.answer(text='Tug\'ilgan kuni va joyi ')
     await Create_parents.next()
 
 @dp.message_handler(state=Create_parents.birthday)
 async def cmdfio(message: types.Message, state: FSMContext):
     a = await check_user(message.from_user.id)
-    async with state.proxy() as data:
-        data[f'pbirthday{a}'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id][f'pbirthday{a}'] = data[f'pbirthday{a}']
+    # async with state.proxy() as data:
+    #     data[f'pbirthday{a}'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id][f'pbirthday{a}'] = data[f'pbirthday{a}']
+    # nds = await select_user(message.from_user.id, 'qarindoshlari')
+    # parent_list = nds.split(',')
+
+    nds = await select_user(message.from_user.id, 'qarindoshlari')
+    parent_list = nds.split(',')
+    await update_parent(message.from_user.id, 'birthday',parent_list[a-1], message.text)
     await message.answer(text='Ishlash joyi va lavozimi')
     await Create_parents.next()
 
 @dp.message_handler(state=Create_parents.work)
 async def cmdfio(message: types.Message, state: FSMContext):
     a = await check_user(message.from_user.id)
-    async with state.proxy() as data:
-        data[f'pwork{a}'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id][f'pwork{a}'] = data[f'pwork{a}']
+    # async with state.proxy() as data:
+    #     data[f'pwork{a}'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id][f'pwork{a}'] = data[f'pwork{a}']
+    # nds = await select_user(message.from_user.id, 'qarindoshlari')
+    # parent_list = nds.split(',')
+    nds = await select_user(message.from_user.id, 'qarindoshlari')
+    parent_list = nds.split(',')
+    await update_parent(message.from_user.id, 'work',parent_list[a-1], message.text)
     await message.answer(text='Turar joyi ')
     await Create_parents.next()
 
 @dp.message_handler(state=Create_parents.location)
 async def cmdfio(message: types.Message, state: FSMContext):
     a = await check_user(message.from_user.id)
-    async with state.proxy() as data:
-        data[f'plocation{a}'] = message.text
-        dict_data[message.from_user.id] = {}
-        dict_data[message.from_user.id][f'plocation{a}'] = data[f'plocation{a}']
-    await message.answer(text=f"Qarindosh sifatida {data[f'pfio{a}']} qo'shildi\nYana qarindosh qo'shish uchun <b>/create_person</b> tugmasini bosing",
+    # async with state.proxy() as data:
+    #     data[f'plocation{a}'] = message.text
+    #     dict_data[message.from_user.id] = {}
+    #     dict_data[message.from_user.id][f'plocation{a}'] = data[f'plocation{a}']
+    # nds = await select_user(message.from_user.id, 'qarindoshlari')
+    # parent_list = nds.split(',')
+
+    nds = await select_user(message.from_user.id, 'qarindoshlari')
+    parent_list = nds.split(',')
+    await update_parent(message.from_user.id, 'location',parent_list[a-1], message.text)
+
+    await message.answer(text=f"Qarindosh sifatida qo'shildi\nYana qarindosh qo'shish uchun <b>/create_person</b> tugmasini bosing",
                          reply_markup=create_parents_keyboard(),
                          parse_mode='html')
-
-
-
-
-
 
 if __name__ == '__main__':
     executor.start_polling(dispatcher=dp,

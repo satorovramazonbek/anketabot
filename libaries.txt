@@ -1,0 +1,6 @@
+proyekt ishlashi uchun kerakli kutubxonalar:
+    python 3.9
+    aiogram==2.25.1
+    python-docx
+    sqlite3
+    os
